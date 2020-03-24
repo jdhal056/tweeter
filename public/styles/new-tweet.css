@@ -16,7 +16,7 @@ textarea {
   width: 100%;
 }
 
-button {
+input {
   font-family: "Bungee";
   padding: 5px;
   background-color: #4056A1;
@@ -30,4 +30,8 @@ button {
   bottom: 0;
   font-size: 80%;
   padding: 10px;
+}
+
+.color-red {
+  color: red;
 }

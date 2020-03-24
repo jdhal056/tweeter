@@ -24,6 +24,7 @@
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
@@ -51,9 +52,9 @@
       <section class="new-tweet">
         <h2>Compose Preet</h2>
         <form id="compose" method="POST" action="/tweets/">
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-          <button type="submit">Preet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
+          <textarea id="tweet-text" name="text" placeholder="What are you humming about?"></textarea>
+          <input type="submit" value="Preet">
+          <span class="counter">140</span>
         </form>
       </section>
     </main>
