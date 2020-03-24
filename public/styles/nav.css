@@ -1,0 +1,19 @@
+#nav-bar  {
+  top: 0;
+  height: 120px;
+  width: 100%;
+  z-index: 1000;
+  background-color: #4056A1;
+  color: #FFFF;
+  padding: 1.5em;
+}
+
+#nav-bar .appName {
+  font-family: "Bungee";
+}
+
+#nav-bar .tweet {
+  position: relative;
+  top: 0px;
+  left: 925px;
+}

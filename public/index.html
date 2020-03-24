@@ -7,8 +7,20 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
 
+    <!-- Custom Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,300i,700,700i&display=swap" rel="stylesheet">
+
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+
+    <!-- Header CSS -->
+    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+
+    <!-- New Tweet CSS -->
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -19,11 +31,31 @@
 
   <body>
     <!-- Top nav bar (fixed) -->
-    <nav>
-      <span>tweeter</span>
+    <nav id="nav-bar">
+      <span class="appName">preeter</span>
+      <span class="tweet"><b>Write</b> a new preet</span>
     </nav>
 
+    <header id="header">
+      <div>
+          <img class="image" src="/images/profile-hex.png"> 
+      </div>
+      <br>
+      <div>
+          <h2 class="name">Jaspreet</h2>
+      </div>
+    </header>
+
     <!-- Page-specific (main) content here -->
-    <main class="container"></main>
+    <main class="container">
+      <section class="new-tweet">
+        <h2>Compose Preet</h2>
+        <form id="compose" method="POST" action="/tweets/">
+          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <button type="submit">Preet</button>
+          <output name="counter" class="counter" for="tweet-text">140</output>
+        </form>
+      </section>
+    </main>
   </body>
 </html>
