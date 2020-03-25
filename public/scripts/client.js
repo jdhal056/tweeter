@@ -1,34 +1,42 @@
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
+const loadTweets = function() {
+  $.ajax({
+    url: "/tweets",
+    method: "GET", 
+    data: $("#compose").serialize(), 
+    datatype: "json", 
+    success: function(data) {
+      renderTweets(data);
+    }
+  })
+};
+
+const submitTweet = function(event) {
+  event.preventDefault();
+  let thisData = $(this).serialize();
+  let tweetLength = $("textarea").val().length;
+  if (tweetLength === 0) {
+    alert("Please enter something!");
+    return;
+  } else if (tweetLength > 140) {
+    alert("Preet too long!");
+    return;
+  } else {
+    $.ajax({
+      url: "/tweets",
+      method: "POST", 
+      data: thisData
+    }).then(function() {
+      $("textarea").val("");
+      loadTweets();
+    })
   }
-]
+};
 
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
-    let $tweet = createTweetElement(tweet);
-    $(".tweet-container").prepend($tweet);
+    $(".tweet-container").prepend(createTweetElement(tweet));
   }
-}
+};
 
 const createTweetElement = function(tweetData) {
   const $tweet = $("<article>").addClass("tweet");
@@ -55,6 +63,9 @@ const createTweetElement = function(tweetData) {
   </footer>`;
   $tweet = $tweet.append(html);
   return $tweet;
-}
+};
 
-renderTweets(data);
+$(document).ready(function() {
+  loadTweets();
+  $("#compose").on("submit", submitTweet);
+})
