@@ -1,0 +1,89 @@
+.tweet {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px;
+  border-color: rgba(0, 0, 0, 0.473);
+  border-style: solid;
+  border-width: 5px;
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.tweet header h2{
+  visibility: hidden;
+}
+.tweet .man {
+  width: 55px;
+  height: 55px;
+  margin-top: 7px;
+  margin-left: 15px;
+  margin-right: 10px;
+
+}
+.tweet .flag {
+  width: 25px;
+  height: 25px;
+}
+
+.tweet .retweet {
+  width: 25px;
+  height: 25px;
+}
+
+.tweet .heart {
+  width: 25px;
+  height: 25px;
+}
+
+.tweet header {
+  display: flex;
+}
+
+.tweet header h1 {
+  font-size: 1em;
+  font-weight: 100;
+  color: #6b6c6f;
+  margin: auto;
+  width: 200px;
+  position: relative;
+  top: 10px;
+  right: 390px;
+}
+
+.tweet header h2 {
+  font-size: 0.7em;
+  font-weight: 100;
+  color: rgba(128, 128, 128, 0.699);
+  margin-right: 10px;
+}
+
+.tweet:hover header h2{
+  visibility: visible;
+}
+
+.tweet .tweet-content p {
+  font-size: 1.3em;
+  margin-left: 15px;
+  margin-top: 35px;
+}
+
+.tweet footer {
+  border-top: solid 5px rgba(0, 0, 0, 0.32);
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.tweet:hover footer {
+  border-top: solid 5px rgba(0, 0, 0);
+}
+
+.tweet footer p {
+  font-size: 0.7em;
+  margin-left: 15px;
+}
+
+.tweet:hover {
+  border: solid rgb(0, 0, 0) 7px;
+}
