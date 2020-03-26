@@ -15,10 +15,10 @@ const submitTweet = function(event) {
   let thisData = $(this).serialize();
   let tweetLength = $("textarea").val().length;
   if (tweetLength === 0) {
-    alert("Please enter something!");
+    $(".error").text("Please enter something!").toggle(true);
     return;
   } else if (tweetLength > 140) {
-    alert("Preet too long!");
+    $(".error").text("Preet too long!").toggle(true);
     return;
   } else {
     $.ajax({
@@ -33,34 +33,34 @@ const submitTweet = function(event) {
 };
 
 const renderTweets = function(tweets) {
+  $(".tweet-container").empty();
   for (let tweet of tweets) {
     $(".tweet-container").prepend(createTweetElement(tweet));
   }
 };
 
 const createTweetElement = function(tweetData) {
-  const $tweet = $("<article>").addClass("tweet");
+  let $tweet = $("<article>").addClass("tweet");
+
+  let $header = $("<header>");
+  let $img = $("<img>").attr("src", tweetData.user.avatars);
+  let $h1 = $("<h1>").text(tweetData.user.name);
+  let $h2 = $("<h2>").text(tweetData.user.handle);
+  $header.append($img);
+  $header.append($h1);
+  $header.append($h2);
+  $tweet.append($header);
+
+  let $div = $("<div>").text(tweetData.content.text);
+  $tweet.append($div);
+
+  let $footer = $("<footer>");
+  let $p = $("<p>").text(tweetData.created_at);
+  $footer.append($p);
+  $tweet.append($footer);
+
   let html = 
-  `<header>
-    <img src=${tweetData.user.avatars} />
-    <h1>${tweetData.user.name}</h1>
-    <h2>${tweetData.user.handle}</h2>
-  <header>
-  <div class="tweet-content">
-    <p>
-      ${tweetData.content.text}
-    </p>
-  </div>
-  <footer>
-    <p>
-      ${tweetData.created_at}
-    </p>
-    <span>
-      <img class="flag" src="/images/iconfinder_flag_216203.png">
-      <img class="retweet" src="/images/iconfinder_basics-14_296820.png">
-      <img class="heart" src="/images/heart.png">
-    </span>
-  </footer>`;
+  `<span><img class="flag" src="/images/iconfinder_flag_216203.png"><img class="retweet" src="/images/iconfinder_basics-14_296820.png"><img class="heart" src="/images/heart.png"></span>`
   $tweet = $tweet.append(html);
   return $tweet;
 };
@@ -68,4 +68,4 @@ const createTweetElement = function(tweetData) {
 $(document).ready(function() {
   loadTweets();
   $("#compose").on("submit", submitTweet);
-})
+});
