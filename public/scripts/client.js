@@ -55,7 +55,7 @@ const createTweetElement = function(tweetData) {
   $tweet.append($div);
 
   let $footer = $("<footer>");
-  let $p = $("<p>").text(tweetData.created_at);
+  let $p = $("<p>").text(getTime(tweetData.created_at));
   $footer.append($p);
   $tweet.append($footer);
 
@@ -63,6 +63,22 @@ const createTweetElement = function(tweetData) {
   `<span><img class="flag" src="/images/iconfinder_flag_216203.png"><img class="retweet" src="/images/iconfinder_basics-14_296820.png"><img class="heart" src="/images/heart.png"></span>`
   $tweet = $tweet.append(html);
   return $tweet;
+};
+
+const getTime = function(date) {
+  let currentTime = Date.now();
+  let timePassed = (currentTime - date) / 1000 / 60;
+  let hoursPassed = (currentTime - date) / 1000 / 60 / 60;
+  let daysPassed = hoursPassed / 24;
+  if (timePassed < 1) {
+    return `${Math.floor(timePassed)} seconds ago`;
+  } else if (timePassed > 1 && timePassed < 60) {
+    return `${Math.floor(timePassed)} minutes ago`;
+  } else if (timePassed > 60 && hoursPassed < 24) {
+    return `${Math.floor(hoursPassed)} hours ago`;
+  } else if (hoursPassed > 24) {
+    return `${Math.floor(daysPassed)} days ago`;
+  }
 };
 
 $(document).ready(function() {
