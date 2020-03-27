@@ -82,6 +82,10 @@ const getTime = function(date) {
 };
 
 $(document).ready(function() {
+  $(".new-tweet").hide();
   loadTweets();
   $("#compose").on("submit", submitTweet);
+  $("button").click(function() {
+    $(".new-tweet").slideToggle()
+  })
 });
